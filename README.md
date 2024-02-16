@@ -102,6 +102,9 @@ After completing the task, please share the project via a git repository. The re
 
    Visit http://localhost:8000/admin/ in your web browser.
 
+### Looks Like
+ 
+
 ## Contributing
 
 Contributions to the project are welcome! If you'd like to contribute, please follow the guidelines outlined in the CONTRIBUTING.md file.
