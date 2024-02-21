@@ -1,4 +1,12 @@
-# Search Smartly
+# Property and POI ingestion service
+
+## Read the ingestion boundary first
+
+The project demonstrates an ingestion workflow for property and point-of-interest information. Its value is in the path from source records through normalization and storage to API access, rather than the number of endpoints.
+
+When reviewing it, trace one malformed record, a duplicate import, and a partial upstream failure. Batch size, retry policy, idempotency, and indexes should be measured against a representative feed before describing the service as scalable. The implementation and existing setup notes below are the starting point for that review.
+
+For persistent Django sessions, supply `DJANGO_SECRET_KEY` (or `SECRET_KEY`) in the process environment. Local development uses a fresh temporary signing key when neither is set.
 
 ## Description
 
@@ -41,7 +49,7 @@ Celery addressed all our requirements for an efficient, scalable, and reliable d
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/search-smartly.git
+   git clone https://github.com/DevCipher-blip/poi-data-importer.git
    ```
 
 2. Navigate to the project directory:
@@ -71,7 +79,7 @@ Celery addressed all our requirements for an efficient, scalable, and reliable d
    ```bash
    python manage.py makemigrations
    ```
-   
+
    ```bash
    python manage.py migrate
    ```
@@ -82,7 +90,7 @@ Celery addressed all our requirements for an efficient, scalable, and reliable d
    ```bash
    celery -A SearchSmartly worker --loglevel=info
    ```
-     
+
 2. Import PoI data from files using the management command:
 
    ```bash
@@ -110,4 +118,3 @@ python3 manage.py test poi.tests
 ## Contributing
 
 Contributions to the project are welcome! If you'd like to contribute, please follow the guidelines outlined in the CONTRIBUTING.md file.
-
